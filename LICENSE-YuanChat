@@ -1,0 +1,59 @@
+YuanChat开源协议
+
+日期:2024年01月03日
+点击同意或浏览或使用或分发YuanChat项目的任何部分，您将被视为认可并接受本协议的内容，本协议立即生效。
+
+一、定义
+1．YuanChat开源协议（以下简称“本协议”）是指本协议中定义的使用、复制、分发和修改YuanChat项目的条款和条件。
+2．“我们”是指浪潮电子信息产业股份有限公司。
+3．“许可方”是指授予许可的版权所有者或版权所有者实体，包括可能对项目和/或被分发项目拥有权利的个人或实体。
+4．“您”（或“您的”）是指行使本协议许可授予的权限和/或出于任何目的在任何领域使用项目的个人或法人实体，属于本协议的被许可人。
+5．“项目”是指根据本协议可获得的YuanChat软件、代码和文档(及其任何部分)。
+
+二、许可和限制
+YuanChat项目的开源协议遵循Apache2.0开源协议，允许商业化使用，并且增加以下附加条款：
+1．YuanChat允许商业化使用，如使用YuanChat作为其他应用的后端服务或者将YuanChat作为公司的一个对话机器人应用。但是，您不得出于任何军事或非法目的使用、复制、修改、合并、发布、分发、复制或创建本项目。
+2．本项目“按原样”提供，不附带任何明示或默示的保证，包括适销性、无侵权性或特定用途的适用性等。我们不提供任何保证，也不承担任何对项目及其产生的任何输出的安全性或稳定性的责任。
+3．在任何情况下，我们对您不承担任何责任，包括但不限于因您使用或无法使用项目或其任何输出而引起的任何直接或间接、特殊或后果性损害，无论其原因如何。
+4．作为本项目的共享者，您应同意对于您贡献的代码：(1) 我们可以调整开源协议的严格或放宽程度。(2) 可用于商业目的。
+
+除此之外，所有其他权利和限制都遵循Apache License 2.0。如果需要更详细的信息，可以参考Apache License 2.0的完整版本。
+
+© 2024 浪潮信息
+---
+根据Apache License 2.0(“许可协议”)许可;除非遵守许可协议，否则您不得使用此文件。您可以从以下网址获得许可协议的副本：
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+除非适用法律要求或书面同意，根据本许可协议分发的软件项目均按“原样”分发，不附带任何明示或默示的保证或条件。请参阅许可协议以了解具体的许可权限和限制。
+
+
+YuanChat Open Source License
+
+Release Date: January 3rd, 2024
+By clicking to agree or browsing or by using or distributing any portion or element of the YuanChat project, you will be deemed to have recognized and accepted the content of this Agreement, which is effective immediately.
+
+1. Definitions
+1.1．This YuanChat LICENSE AGREEMENT (this "Agreement") shall mean the terms and conditions for use, reproduction, distribution and modification of the project as defined by this Agreement.
+1.2．"We"(or "Us") shall mean IEIT SYSTEMS.
+1.3. “Licensor” means any person or entity that distributes its Work.
+1.4．"You" (or "Your") shall mean a natural person or legal entity exercising the rights granted by this Agreement and/or using the project for any purpose and in any field of use.
+1.5． "Project" shall mean, collectively, YuanChat’s codes and Documentation (and any portion thereof) made available under this Agreement.
+
+2. Grant of Rights and Limitation of Liability
+The YuanChat project is licensed under the Apache License 2.0, with the following additional conditions:
+2.1．YuanChat is permitted to be used for commercialization, such as using YuanChat as a "backend-as-a-service" for your other applications, or delivering it to enterprises as an chatbot application. However,you are not permitted to use, copy, modify, merge, publish, distribute, sublicense, or create works based on this project for any military or illegal purposes.
+2.2．THE PROJECT ARE PROVIDED "AS IS" WITHOUT ANY EXPRESS OR IMPLIED WARRANTY OF ANY KIND INCLUDING WARRANTIES OF MERCHANTABILITY, NONINFRINGEMENT, OR FITNESS FOR A PARTICULAR PURPOSE. WE MAKE NO WARRANTY AND ASSUME NO RESPONSIBILITY FOR THE SAFETY OR STABILITY OF THE PROJECT AND ANY OUTPUT THEREFROM.
+2.3．IN NO EVENT SHALL WE BE LIABLE TO YOU FOR ANY DAMAGES, INCLUDING, BUT NOT LIMITED TO ANY DIRECT, OR INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING FROM YOUR USE OR INABILITY TO USE THE PROJECT OR ANY OUTPUT OF IT, NO MATTER HOW IT’S CAUSED.
+2.4. As a contributor, you should agree that your contributed code:(1) The producer can adjust the open-source agreement to be more strict or relaxed.(2) Can be used for commercial purposes
+
+© 2024  IEIT SYSTEMS. 
+
+Apart from this, all other rights and restrictions follow the Apache License 2.0. If you need more detailed information, you can refer to the full version of Apache License 2.0.
+
+-----
+Licensed under the Apache License, Version 2.0 (the "License");you may not use this file except in compliance with the License.You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.See the License for the specific language governing permissions and limitations under the License.

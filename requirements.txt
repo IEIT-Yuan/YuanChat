@@ -1,0 +1,12 @@
+colorlog~=6.8.0
+requests~=2.31.0
+uvicorn~=0.24.0.post1
+fastapi~=0.104.1
+pydantic~=2.5.2
+loggers~=0.1.4
+numpy~=1.26.2
+sse_starlette~=1.8.2
+tqdm~=4.66.1
+boto3~=1.34.2
+botocore~=1.34.2
+Jinja2~=3.0.1

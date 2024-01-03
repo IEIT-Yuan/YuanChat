@@ -1,0 +1,1 @@
+docker run -d -p 5050:5050 --log-opt max-size=500m --log-opt max-file=10 --name yuanchat yuanchat:latest

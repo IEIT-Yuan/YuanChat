@@ -1,0 +1,61 @@
+// 添加行号样式
+.content_markdown {
+  &::v-deep(pre .hljs) {
+    padding: 8px 2px;
+    border-radius: 5px;
+    position: relative;
+    max-width: 850px;
+
+    div.code-block-header {
+      position: absolute;
+      top: 2px;
+      left: 0;
+      color: #999;
+      z-index: 10;
+      // pointer-events: none;
+      background-color: rgba(255, 255, 255, 0.1);
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      .code-block-header-lang {
+        padding-left: 10px;
+      }
+
+      .code-block-header-copy {
+        cursor: pointer;
+        padding-right: 10px;
+
+        &:hover {
+          color: white;
+        }
+      }
+    }
+
+    div.code-block {
+      margin-top: 25px;
+    }
+
+    ul {
+      list-style: decimal;
+      margin: 0 0 0 40px;
+      padding: 0;
+
+      li {
+        // list-style: decimal-leading-zero;
+        position: relative;
+        padding-left: 10px;
+        white-space: pre-wrap;
+
+        .line-num {
+          position: absolute;
+          left: -40px;
+          top: 0;
+          width: 40px;
+          height: 100%;
+          border-right: 1px solid rgba(0, 0, 0, 0.66);
+        }
+      }
+    }
+  }
+}

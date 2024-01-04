@@ -17,6 +17,6 @@ COPY . .
 
 COPY --from=base ./dist ./dist
 
-ENV YUAN_2_URL = "http://127.0.0.1:8000/yuan"
+ENV YUAN_2_URL="http://127.0.0.1:8000/yuan"
 
 ENTRYPOINT  ["/bin/bash", "start.sh"]

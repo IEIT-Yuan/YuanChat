@@ -58,7 +58,7 @@ docker run -d --name all-in-one -p 5050:5050 -v f:\yuandemo\Yuan2-2B-hf:/models 
 ### 3.3 测试服务
 用浏览器打开地址: [http://localhost:5050](http://localhost:5050)，会看到如下页面
 ![chat-home](./images/quick-install/chat-home.jpg)
-# :tada:到此，恭喜你已完成部署，现在可以体验和测试Yuan大模型了！
+### :tada:到此，恭喜你已完成部署，现在可以体验和测试Yuan大模型了！
 
 ## FAQ
 ### 1. Docker 虚拟内存不够，导致服务启动失败

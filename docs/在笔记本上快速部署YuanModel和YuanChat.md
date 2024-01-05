@@ -1,9 +1,8 @@
 # 在笔记本上快速部署Yuan-2B模型和YuanChat
 
-## 1. 配置要求 //todo 具体配置需要验证
+## 1. 配置要求 
 * 内存: 16GB+
 * 系统: windows10/11 或 macos
-* GPU: Nvidia GPU，在 GTX3070 上通过验证
 
 ## 2. 环境准备
 
@@ -29,7 +28,7 @@
 > inference_hidden_states_memory = torch.empty> (bsz, 2, hidden_states.shape[2], > dtype=hidden_states.dtype)
 > ```
 ### 2.3. 拉取镜像
-我们封装了一个可直接运行`Yuan Model`推理和`YuanChat`的镜像，可已通过如下命令进行拉取，如果你的环境中有`GPU`，请使用第二条命令，这样可以加速你的推理过程，更快地获取结果。
+我们封装了一个可直接运行`Yuan Model`推理和`YuanChat`的镜像，可已通过如下命令进行拉取。
 ```shell
 #for only CPU
 docker pull yuanmodel/yuanchat:all-cpu
@@ -59,7 +58,7 @@ docker run -d --name all-in-one -p 5050:5050 -v f:\yuandemo\Yuan2-2B-hf:/models 
 ### 3.3 测试服务
 用浏览器打开地址: [http://localhost:5050](http://localhost:5050)，会看到如下页面
 ![chat-home](./images/quick-install/chat-home.jpg)
-# :taba:到此，恭喜你已完成部署，现在可以体验和测试Yuan大模型了！
+# :tada:到此，恭喜你已完成部署，现在可以体验和测试Yuan大模型了！
 
 ## FAQ
 ### 1. Docker 虚拟内存不够，导致服务启动失败

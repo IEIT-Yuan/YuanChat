@@ -24,6 +24,9 @@
 
 </div>
 
+## :tada: 最近更新
+
+
 <!-- TODO -->
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -183,7 +186,8 @@ bash start.sh
 
 ## 产品规划
 
-- [ ] 新增 README.md
+- [x] 增加 README 中文文档
+- [ ] 增加 windows+GPU 部署说明
 
 <p align="right">(<a href="#readme-top">回到顶端</a>)</p>
 

@@ -25,8 +25,8 @@
 </div>
 
 ## :tada: 最近更新
-* :fire: [**在笔记本上快速部署Yuan大模型和YuanChat** :point_right:](./docs/在笔记本上快速部署YuanModel和YuanChat.md)
-
+* :fire: [**笔记本上快速部署Yuan大模型和YuanChat** :point_right:](./docs/在笔记本上快速部署YuanModel和YuanChat.md)
+---
 <!-- TODO -->
 <!-- TABLE OF CONTENTS -->
 <details>

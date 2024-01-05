@@ -24,6 +24,9 @@
 
 </div>
 
+## :tada: 最近更新
+* :fire: [**笔记本上快速部署Yuan大模型和YuanChat** :point_right:](./docs/在笔记本上快速部署YuanModel和YuanChat.md)
+---
 <!-- TODO -->
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -183,7 +186,8 @@ bash start.sh
 
 ## 产品规划
 
-- [ ] 新增 README.md
+- [x] 增加 README 中文文档
+- [ ] 增加 windows+GPU 部署说明
 
 <p align="right">(<a href="#readme-top">回到顶端</a>)</p>
 

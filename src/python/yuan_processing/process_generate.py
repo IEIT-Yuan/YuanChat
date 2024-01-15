@@ -72,7 +72,7 @@ def processinput(paras_dict):
         return False, error_message
     elif gfw.filter(task_data)[1]:
         error_message = "对不起，您的输入包含敏感信息，请重新输入"
-        return False, error_message, None
+        return False, error_message
 
     # 多轮对话判断，paras_dict['multidialogue']==True时，采用多轮对话
     his_dialogs = []

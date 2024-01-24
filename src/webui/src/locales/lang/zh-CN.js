@@ -15,7 +15,8 @@ const locale = {
   send: '发送',
   recommend: '推荐问题',
   refresh: '换一批',
-  stopTyping: '停止输出'
+  stopTyping: '停止输出',
+  language: '语言'
 }
 
 export default locale

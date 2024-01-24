@@ -11,6 +11,7 @@
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
+  font-family: 'Microsoft YaHei', 'PingFang SC', Avenir, Helvetica, Arial, sans-serif;
 }
 
 /* Sections
@@ -62,8 +63,7 @@ hr {
  */
 
 pre {
-  font-family: Helvetica, Arial, 'Microsoft Yahei', 'PingFang SC', 'Helvetica Neue',
-    'Hiragino Sans GB', 'Heiti SC', 'WenQuanYi Micro Hei', sans-serif;
+  font-family: 'Microsoft YaHei', 'PingFang SC', Avenir, Helvetica, Arial, sans-serif;
   font-size: 1em; /* 2 */
 }
 
@@ -106,8 +106,7 @@ strong {
 code,
 kbd,
 samp {
-  font-family: Helvetica, Arial, 'Microsoft Yahei', 'PingFang SC', 'Helvetica Neue',
-    'Hiragino Sans GB', 'Heiti SC', 'WenQuanYi Micro Hei', sans-serif;
+  font-family: 'Microsoft YaHei', 'PingFang SC', Avenir, Helvetica, Arial, sans-serif;
   font-size: 1em; /* 2 */
 }
 

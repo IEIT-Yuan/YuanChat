@@ -1,0 +1,26 @@
+$color-primary: #0070e0;
+
+$color-white: #ffffff;
+$color-white-1: #f4f7f9;
+$color-white-2: #f8fafc;
+$color-white-3: #d1d3de;
+$color-white-4: #f7f7f8;
+
+$color-black: #000000;
+$color-black-1: #262626;
+$color-black-2: #2b394f;
+
+$color-grey-1: #bfbfbf;
+$color-grey-2: #e0e0e0;
+$color-grey-3: #dfe3ea;
+
+$color-blue-1: rgba(255, 255, 255, 0.2);
+$color-blue-2: rgba(37, 164, 212, 0.2);
+
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+  $colors: (
+    'primary': (
+      'base': #0070e0
+    )
+  )
+);

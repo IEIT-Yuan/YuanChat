@@ -5,6 +5,7 @@ import Welcome from './components/Welcome.vue'
 import useDatabase from '@/hooks/useDatabase'
 import useSSE from '../hooks/useSSE'
 import useAppStore from '@/stores/app'
+import { Promotion } from '@element-plus/icons-vue'
 import {
   getConversationList,
   getMessagesByConversionId,
@@ -94,7 +95,7 @@ function fetchResult(params) {
     useSSE('/sse/subscribe', {
       params: Object.assign({}, params, toRaw(modelParams)),
       onmessage(ev) {
-        console.log('ev', ev)
+        // console.log('ev', ev)
         try {
           const res = JSON.parse(ev.data)
           const { flag, resData } = res
@@ -149,7 +150,6 @@ async function sendMessage() {
   })
   scrollToBottom()
   const MESSAGES_COUNT = useAppStore().maxMultiTurns || 0
-  console.log('MESSAGES_COUNT', MESSAGES_COUNT)
   const _messages = messages.value.slice(-2 * (MESSAGES_COUNT + 1)).reduce((acc, cur) => {
     if (cur.sender) {
       if (cur.sender === 'USER') {
@@ -274,23 +274,21 @@ function useRecommend(content) {
         </div>
         <div class="chat-input_container">
           <el-input
-            class="chat-input"
             v-model="message"
+            class="chat-input"
             type="textarea"
             resize="none"
-            :autosize="{ minRows: 2, maxRows: 4 }"
+            :autosize="{ minRows: 3, maxRows: 6 }"
             :placeholder="$t('lang.inputPlaceholder')"
             @keydown="keydown($event)"
           />
           <div class="chat-input-btn_container">
             <el-button
-              type="primary"
               class="chat-input-btn"
+              :icon="Promotion"
               @click="sendMessage"
               :disabled="!message || 'LOADING' === status"
-            >
-              {{ $t('lang.send') }}
-            </el-button>
+            ></el-button>
           </div>
         </div>
       </div>
@@ -298,11 +296,9 @@ function useRecommend(content) {
   </el-container>
 </template>
 
-<style scoped lang="less">
+<style scoped lang="scss">
 .chat-page_wrapper {
-  background-color: @color-white-2;
   overflow: auto;
-
   .chat-main_wrapper {
     display: flex;
     flex-direction: column;
@@ -327,7 +323,6 @@ function useRecommend(content) {
       overflow-y: auto;
       scrollbar-width: thin;
       padding-bottom: 24px;
-      //scroll-behavior: smooth;
 
       &::-webkit-scrollbar {
         width: 0;
@@ -342,23 +337,8 @@ function useRecommend(content) {
       margin: 0 auto;
 
       .chat-input {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        max-width: 1135px;
-        margin: 0 auto;
-        box-shadow: 3px 3px 7px 1px rgba(0, 75, 174, 0.15);
-        border-radius: 15px;
-
         :deep(.el-textarea__inner) {
-          background-color: @color-white;
-          border: none;
-          border-radius: 15px;
-          padding-right: 86px;
-
-          &:focus {
-            border: solid 1px #0070e0;
-          }
+          border-radius: 10px;
         }
       }
 
@@ -371,16 +351,23 @@ function useRecommend(content) {
         right: 10px;
 
         .chat-input-btn {
-          width: 70px;
+          width: 40px;
           height: 40px;
-          border-radius: 25px;
+          border-radius: 10%;
+          border: none;
           text-align: center;
-          background-image: linear-gradient(90deg, @color-blue-1 0%, @color-blue-2 100%);
+          font-size: 24px;
+          &:not(.is-disabled)::v-deep(.el-icon) {
+            color: $color-primary;
+          }
+          &:hover {
+            color: inherit;
+            background-color: $color-white-4;
+          }
 
           &.is-disabled {
-            background-image: linear-gradient(90deg, @color-grey-2 0%, @color-grey-2 100%);
-            border-color: @color-white-3;
-            color: @color-grey-1;
+            border-color: $color-white-3;
+            color: $color-grey-1;
           }
         }
       }

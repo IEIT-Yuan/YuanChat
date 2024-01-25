@@ -16,7 +16,8 @@ const locale = {
   send: 'Send',
   recommend: 'Recommended questions',
   refresh: 'Refresh',
-  stopTyping: 'Stop'
+  stopTyping: 'Stop',
+  language: 'Language'
 }
 
 export default locale

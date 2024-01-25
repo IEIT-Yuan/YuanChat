@@ -6,6 +6,7 @@ import Icons from 'unplugin-icons/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import ElementPlus from 'unplugin-element-plus/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import eslintPlugin from 'vite-plugin-eslint'
 
@@ -36,6 +37,9 @@ export default defineConfig({
         })
       ]
     }),
+    ElementPlus({
+      useSource: true
+    }),
     Icons({
       autoInstall: true
     }),
@@ -51,9 +55,8 @@ export default defineConfig({
   css: {
     // css预处理器
     preprocessorOptions: {
-      less: {
-        charset: false,
-        additionalData: '@import "./src/styles/variable.less";'
+      scss: {
+        additionalData: `@use "./src/styles/element.scss" as *;`
       }
     }
   },

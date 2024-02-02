@@ -16,7 +16,8 @@ const locale = {
   recommend: '推荐问题',
   refresh: '换一批',
   stopTyping: '停止输出',
-  language: '语言'
+  language: '语言',
+  'max-multi-turns': '多轮对话轮次'
 }
 
 export default locale

@@ -193,7 +193,7 @@ function confirmParams() {
               class="form-input"
             />
           </el-form-item>
-          <el-form-item label="max-multi-turns">
+          <el-form-item :label="$t('lang.max-multi-turns')">
             <el-input-number
               @change="confirmParams"
               controls-position="right"

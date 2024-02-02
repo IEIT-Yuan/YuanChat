@@ -25,6 +25,7 @@ watch(
   () => currentConversationId.value,
   async () => {
     messages.value = await getMessagesByConversionId(currentConversationId.value)
+    status.value = ''
     nextTick(() => {
       scrollToBottom()
     })
@@ -96,7 +97,7 @@ function fetchResult(params) {
     useSSE('/sse/subscribe', {
       params: Object.assign({}, params, toRaw(modelParams)),
       onmessage(ev) {
-        console.log('ev', ev)
+        // console.log('ev', ev)
         try {
           const res = JSON.parse(ev.data)
           const { flag, resData } = res

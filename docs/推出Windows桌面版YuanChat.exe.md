@@ -5,7 +5,7 @@
 * 系统: windows10/11 64位
 
 ## 2. 软件下载
-### 2.1 百度云
+### 2.1 百度云盘
 **链接**：https://pan.baidu.com/s/1i2bCrduiiyv7uAP9hGkoPA?pwd=6f6r 
 
 **提取码**：6f6r 

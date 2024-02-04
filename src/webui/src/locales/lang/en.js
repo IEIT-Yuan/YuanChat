@@ -17,7 +17,8 @@ const locale = {
   recommend: 'Recommended questions',
   refresh: 'Refresh',
   stopTyping: 'Stop',
-  language: 'Language'
+  language: 'Language',
+  'max-multi-turns': 'Multiple dialogue rounds'
 }
 
 export default locale

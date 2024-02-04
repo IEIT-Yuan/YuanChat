@@ -37,11 +37,12 @@ export function getMessagesByConversionId(conversation_id) {
   return messagesDb.where('conversation_id').equals(conversation_id).toArray()
 }
 
-export function addMessage({ content, sender, conversation_id }) {
+export function addMessage({ content, sender, conversation_id, feedback }) {
   return messagesDb.add({
     content,
     sender,
     conversation_id,
+    feedback,
     timestamp: new Date().getTime()
   })
 }
@@ -50,6 +51,9 @@ export function updateMessage({ content, id }) {
   return messagesDb.update(id, { content })
 }
 
+export function updateFeedback({ feedback, id }) {
+  return messagesDb.update(id, { feedback })
+}
 // welcome
 
 // 返回的推荐问题数量

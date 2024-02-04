@@ -12,6 +12,7 @@ import {
   addMessage,
   updateMessage,
   addConversation,
+  updateFeedback,
   deleteConversation as service_deleteConversation,
   editConversationName as service_editConversationName
 } from '@/services'
@@ -24,6 +25,7 @@ watch(
   () => currentConversationId.value,
   async () => {
     messages.value = await getMessagesByConversionId(currentConversationId.value)
+    status.value = ''
     nextTick(() => {
       scrollToBottom()
     })
@@ -169,7 +171,8 @@ async function sendMessage() {
   const result = {
     conversation_id: currentConversationId.value,
     sender: 'BOT',
-    content: resultMsg
+    content: resultMsg,
+    feedback: 0 // 默认无反馈
   }
   await addMessage(result)
   messages.value = await getMessagesByConversionId(currentConversationId.value)
@@ -239,6 +242,30 @@ function keydown(e) {
 function useRecommend(content) {
   message.value = content
 }
+
+function getImageUrl(type, feedback) {
+  let path = ''
+  if (type === 1) {
+    path = feedback === 1 ? 'icon_thumb_up_active' : 'icon_thumb_up_default'
+  } else if (type === 2) {
+    path = feedback === 2 ? 'icon_thumb_down_active' : 'icon_thumb_down_default'
+  }
+  return `${import.meta.env.BASE_URL}icons/${path}.png`
+}
+
+// 更新回馈信息
+function sendFeedback(message, feedback) {
+  console.log(message.id, feedback)
+  if (message.feedback === feedback) {
+    feedback = 0
+  }
+  updateFeedback({
+    feedback,
+    id: message.id
+  }).then(() => {
+    initMessages()
+  })
+}
 </script>
 
 <template>
@@ -266,6 +293,18 @@ function useRecommend(content) {
                 @update="messageUpdate"
                 @typingStopped="typingStopped"
               />
+              <div class="chat-feedback" v-if="msg.sender === 'BOT'">
+                <img
+                  @click="sendFeedback(msg, 1)"
+                  :src="getImageUrl(1, msg.feedback)"
+                  class="icon"
+                />
+                <img
+                  @click="sendFeedback(msg, 2)"
+                  :src="getImageUrl(2, msg.feedback)"
+                  class="icon"
+                />
+              </div>
             </div>
           </template>
           <template v-else>
@@ -326,6 +365,23 @@ function useRecommend(content) {
 
       &::-webkit-scrollbar {
         width: 0;
+      }
+
+      .chat-feedback {
+        display: flex;
+        justify-content: flex-end;
+        .icon {
+          display: inline-block;
+          width: 18px;
+          height: 18px;
+          margin-top: 5px;
+          margin-right: 5px;
+          cursor: pointer;
+          padding: 5px;
+          &:hover {
+            background-color: $color-blue-2;
+          }
+        }
       }
     }
 

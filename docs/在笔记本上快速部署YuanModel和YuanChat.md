@@ -25,7 +25,7 @@
 > 2. yuan_hf_model.py 
 > 1)注释掉 yuan_hf_model.py中第35、36行；
 > 2)修改yuan_hf_model.py中第271行代码为:
-> inference_hidden_states_memory = torch.empty(bsz, 2, hidden_states.shape[2], dtype=hidden_states.dtype)
+> inference_hidden_states_memory = torch.empty> (bsz, 2, hidden_states.shape[2], > dtype=hidden_states.dtype)
 > ```
 ### 2.3. 拉取镜像
 我们封装了一个可直接运行`Yuan Model`推理和`YuanChat`的镜像，可已通过如下命令进行拉取。

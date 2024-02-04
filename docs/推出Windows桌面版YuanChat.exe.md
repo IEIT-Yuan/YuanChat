@@ -8,15 +8,14 @@
 ### 2.1 百度云盘
 **链接**：https://pan.baidu.com/s/1i2bCrduiiyv7uAP9hGkoPA?pwd=6f6r 
 
-**提取码**：6f6r 
 
 ## 3. 运行YuanChat.exe
 > `YuanChat.exe`占用本地的`5050`端口和`8000`端口，如果系统中有其他应用占用了此端口会导致`YuanChat.exe`启动失败，请使用前确认系统环境。
 
-`YuanChat.exe`支持两种方式对模型进行加载: **本地模型** 和 **`ModelScope`** 两种方式。
+`YuanChat.exe`支持两种方式对模型进行加载: **本地模型** 和 **在线加载（ModelScope）**
 ![yuanchat.exe](./images/yuanchatexe/yuanchatexe-1.jpg)
 
-### 3.1 ModelScope（需要联网）
+### 3.1 在线加载（ModelScope，需要联网）
 如果是第一次运行`YuanChat.exe`，且没有下载过`Yuan2-2B`模型，可以选择`ModelScope`方式进行模型的下载。
 `Yuan2-2B`模型在`ModelScope`的路径为：[模型地址链接](https://www.modelscope.cn/models/YuanLLM/Yuan2-2B-Janus-hf/summary)。
 
@@ -28,7 +27,7 @@
 
 待模型下载完成后，会自动加载，加载完成后即可开始使用
 
-### 3.2 本地模型（支持离线）
+### 3.2 本地模型
 此种方式适用于本地已有下载的模型，复制模型所在目录地址，填写到页面中
 ![localdir](./images/yuanchatexe/localmodel.jpg)
 

@@ -266,6 +266,8 @@ function sendFeedback(message, feedback) {
     initMessages()
   })
 }
+
+const webSearchEngine = ref(true)
 </script>
 
 <template>
@@ -292,6 +294,7 @@ function sendFeedback(message, feedback) {
                 :is-new="msg.isNew"
                 @update="messageUpdate"
                 @typingStopped="typingStopped"
+                @useRecommend="useRecommend"
               />
               <div class="chat-feedback" v-if="msg.sender === 'BOT'">
                 <img
@@ -322,6 +325,14 @@ function sendFeedback(message, feedback) {
             @keydown="keydown($event)"
           />
           <div class="chat-input-btn_container">
+            <el-button
+              class="chat-input-btn"
+              @click="webSearchEngine = !webSearchEngine"
+              :title="webSearchEngine ? '网络搜索已开启' : '网络搜索已关闭'"
+            >
+              <img v-if="webSearchEngine" src="@/assets/network.svg" class="input-icon" alt="" />
+              <img v-else src="@/assets/network_disconnected.svg" class="input-icon" alt="" />
+            </el-button>
             <el-button
               class="chat-input-btn"
               :icon="Promotion"
@@ -360,7 +371,7 @@ function sendFeedback(message, feedback) {
       margin: 0 auto;
       flex: 1;
       overflow-y: auto;
-      scrollbar-width: thin;
+      // scrollbar-width: thin;
       padding-bottom: 24px;
 
       &::-webkit-scrollbar {
@@ -401,7 +412,6 @@ function sendFeedback(message, feedback) {
       .chat-input-btn_container {
         align-items: center;
         display: flex;
-        flex-direction: column;
         position: absolute;
         bottom: 5px;
         right: 10px;
@@ -424,6 +434,11 @@ function sendFeedback(message, feedback) {
           &.is-disabled {
             border-color: $color-white-3;
             color: $color-grey-1;
+          }
+
+          .input-icon {
+            width: 24px;
+            height: 24px;
           }
         }
       }

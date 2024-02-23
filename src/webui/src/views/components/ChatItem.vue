@@ -21,7 +21,7 @@ const props = defineProps({
   }
 })
 
-const emits = defineEmits(['update', 'typingStopped'])
+const emits = defineEmits(['update', 'typingStopped', 'useRecommend'])
 
 function typing() {
   emits('update')
@@ -34,6 +34,46 @@ function typingStopped(renderedResult) {
 const isUser = computed(() => {
   return props.sender === 'USER'
 })
+
+const sourceList = ref([
+  {
+    title: '日历网',
+    detail: '2024法定假期，调休，节假日'
+  },
+  {
+    title: '日历网',
+    detail: '2024法定假期，调休，节假日'
+  },
+  {
+    title: '日历网',
+    detail: '2024法定假期，调休，节假日'
+  },
+  {
+    title: '日历网',
+    detail: '2024法定假期，调休，节假日'
+  },
+  {
+    title: '日历网',
+    detail: '2024法定假期，调休，节假日'
+  },
+  {
+    title: '日历网',
+    detail: '2024法定假期，调休，节假日'
+  }
+])
+const relatedList = ref([
+  '规划哈沙德回复规划哈沙德回复规划哈沙德回复规划哈沙德回复规划哈沙德回复规划哈沙德回复',
+  '规划哈沙德回复规划哈沙德回复规划哈沙德回复',
+  '规划哈沙德回复',
+  '规划哈沙德回复',
+  '规划哈沙德回复规划哈沙德回复规划哈沙德回复',
+  '规划哈沙德回复',
+  '规划哈沙德回复'
+])
+
+function useRecommend(value) {
+  emits('useRecommend', value)
+}
 </script>
 
 <template>
@@ -57,6 +97,36 @@ const isUser = computed(() => {
             @typing="typing"
             @typingStopped="typingStopped"
           />
+          <div class="chat-item-wse">
+            <div class="chat-item-wse__title">Sources</div>
+            <el-row gutter="5">
+              <el-col :span="6" v-for="(source, index) in sourceList" :key="index">
+                <el-card shadow="hover" class="source-container">
+                  <div class="source-title">
+                    <span>{{ source.title }}</span>
+                  </div>
+                  <div class="source-detail">
+                    {{ source.detail }}
+                  </div>
+                </el-card>
+              </el-col>
+            </el-row>
+          </div>
+          <div class="chat-item-wse">
+            <div class="chat-item-wse__title">Related</div>
+            <el-tag
+              class="recommend-prompt-tag"
+              effect="plain"
+              size="large"
+              type="info"
+              v-for="(content, index) in relatedList"
+              :key="index"
+              @click="useRecommend(content)"
+              round
+            >
+              {{ content }}
+            </el-tag>
+          </div>
         </template>
       </template>
     </div>
@@ -71,7 +141,7 @@ const isUser = computed(() => {
   padding: 12px;
 
   &:not(.user) {
-    background-color: $color-grey-2;
+    background-color: $color-white;
     border-radius: 10px;
   }
 
@@ -95,6 +165,38 @@ const isUser = computed(() => {
     flex: 1;
     font-size: 15px;
     line-height: 1.8;
+
+    .chat-item-wse {
+      margin: 20px 0;
+      .chat-item-wse__title {
+        font-size: 24px;
+        color: $color-primary;
+      }
+      .source-container {
+        margin-bottom: 10px;
+        background-color: $color-grey-3;
+        border-radius: 15px;
+        .source-title {
+          font-weight: bold;
+        }
+      }
+
+      .recommend-prompt-tag {
+        margin-right: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        background-color: $color-grey-3;
+        color: $color-black-1;
+        font-size: 14px;
+        white-space: pre-wrap;
+        border: none;
+        padding: 20px;
+        border-radius: 10px;
+        &:hover {
+          background-color: $color-blue-2;
+        }
+      }
+    }
   }
 
   &.user {

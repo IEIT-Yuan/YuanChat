@@ -11,7 +11,7 @@ if not os.path.exists(AS_LOG_HOME):
 DEFAULT_PORT = 5050
 AS_CHECK_INFER_CODE = 100
 
-YUAN_2_URL = [["http://172.31.4.32:8900/yuan"]]
+YUAN_2_URL = [["http://127.0.0.1:8000/yuan"]]
 
 if os.environ.get('YUAN_2_URL'):
     YUAN_2_URL = [[os.environ.get('YUAN_2_URL')]]

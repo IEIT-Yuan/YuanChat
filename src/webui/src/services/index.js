@@ -37,14 +37,12 @@ export function getMessagesByConversionId(conversation_id) {
   return messagesDb.where('conversation_id').equals(conversation_id).toArray()
 }
 
-export function addMessage({ content, sender, conversation_id, feedback }) {
-  return messagesDb.add({
-    content,
-    sender,
-    conversation_id,
-    feedback,
-    timestamp: new Date().getTime()
-  })
+export function addMessage(message) {
+  return messagesDb.add(
+    Object.assign({}, message, {
+      timestamp: new Date().getTime()
+    })
+  )
 }
 
 export function updateMessage({ content, id }) {

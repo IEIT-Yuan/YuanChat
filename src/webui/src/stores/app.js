@@ -18,21 +18,34 @@ const useAppStore = defineStore('app', () => {
     response_length: 5000,
     temperature: 1.0,
     top_p: 1.0,
-    top_k: 5
+    top_k: 5,
+    // Web Search params
+    browser_flag: false,
+    access_key: '',
+    embeddings_model_path: '',
+    retrieve_topk: 3,
+    template:
+      '说明：您是一位认真的研究者。使用提供的网络搜索结果，对给定的问题写一个全面而详细的回复。\n用语言回答：中文\n问题：'
   }
 
-  const modelParams = reactive({
+  let modelParams = reactive({
     ...DEFAULT_MODEL_PARAMS
   })
 
   function getModelParams() {
-    console.log('getModelParams')
     const _params = JSON.parse(localStorage.getItem('MODEL_PARAMS'))
     if (_params) {
       modelParams.response_length = _params?.response_length || DEFAULT_MODEL_PARAMS.response_length
       modelParams.temperature = _params?.temperature || DEFAULT_MODEL_PARAMS.temperature
       modelParams.top_p = _params?.top_p || DEFAULT_MODEL_PARAMS.top_p
       modelParams.top_k = _params?.top_k || DEFAULT_MODEL_PARAMS.top_k
+      // Web Search params
+      modelParams.browser_flag = _params?.browser_flag || DEFAULT_MODEL_PARAMS.browser_flag
+      modelParams.access_key = _params?.access_key || DEFAULT_MODEL_PARAMS.access_key
+      modelParams.embeddings_model_path =
+        _params?.embeddings_model_path || DEFAULT_MODEL_PARAMS.embeddings_model_path
+      modelParams.retrieve_topk = _params?.retrieve_topk || DEFAULT_MODEL_PARAMS.retrieve_topk
+      modelParams.template = _params?.template || DEFAULT_MODEL_PARAMS.template
     } else {
       setModelParams(DEFAULT_MODEL_PARAMS)
     }
@@ -42,11 +55,18 @@ const useAppStore = defineStore('app', () => {
   getModelParams()
 
   function setModelParams(params) {
-    modelParams.response_length = params?.response_length
-    modelParams.temperature = params?.temperature
-    modelParams.top_p = params?.top_p
-    modelParams.top_k = params?.top_k
-    localStorage.setItem('MODEL_PARAMS', JSON.stringify(params))
+    modelParams = reactive(Object.assign({}, modelParams, params))
+    // modelParams.response_length = params?.response_length
+    // modelParams.temperature = params?.temperature
+    // modelParams.top_p = params?.top_p
+    // modelParams.top_k = params?.top_k
+    // // Web Search params
+    // modelParams.browser_flag = params?.browser_flag
+    // modelParams.access_key = params?.access_key
+    // modelParams.embeddings_model_path = params?.embeddings_model_path
+    // modelParams.retrieve_topk = params?.retrieve_topk
+    // modelParams.template = params?.template
+    localStorage.setItem('MODEL_PARAMS', JSON.stringify(modelParams))
   }
 
   const DEFAULT_MAX_MULTI_TURNS = 0

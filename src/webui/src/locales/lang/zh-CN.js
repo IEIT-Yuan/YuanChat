@@ -17,7 +17,18 @@ const locale = {
   refresh: '换一批',
   stopTyping: '停止输出',
   language: '语言',
-  'max-multi-turns': '多轮对话轮次'
+  'max-multi-turns': '多轮对话轮次',
+  noEmpty: '此处不能为空白',
+  sources: '参考源',
+  related: '推荐问题',
+  wsEnabled: '网络搜索已开启',
+  wsDisabled: '网络搜索已关闭',
+  wsConfigSetting: '网络搜索参数设置',
+  embeddingModelPath: '嵌入式模型本地路径',
+  sourceTopK: '参考源数量',
+  llmTemplate: '输入LLM模板',
+  disclaimer: '所有内容均由AI模型生成，仅供参考，不代表我们的态度或观点，请遵守 ',
+  and: '与'
 }
 
 export default locale

@@ -18,6 +18,18 @@ const props = defineProps({
   isNew: {
     type: Boolean,
     default: false
+  },
+  sourceList: {
+    type: Array,
+    default: () => {
+      return []
+    }
+  },
+  relatedList: {
+    type: Array,
+    default: () => {
+      return []
+    }
   }
 })
 
@@ -34,42 +46,6 @@ function typingStopped(renderedResult) {
 const isUser = computed(() => {
   return props.sender === 'USER'
 })
-
-const sourceList = ref([
-  {
-    title: '日历网',
-    detail: '2024法定假期，调休，节假日'
-  },
-  {
-    title: '日历网',
-    detail: '2024法定假期，调休，节假日'
-  },
-  {
-    title: '日历网',
-    detail: '2024法定假期，调休，节假日'
-  },
-  {
-    title: '日历网',
-    detail: '2024法定假期，调休，节假日'
-  },
-  {
-    title: '日历网',
-    detail: '2024法定假期，调休，节假日'
-  },
-  {
-    title: '日历网',
-    detail: '2024法定假期，调休，节假日'
-  }
-])
-const relatedList = ref([
-  '规划哈沙德回复规划哈沙德回复规划哈沙德回复规划哈沙德回复规划哈沙德回复规划哈沙德回复',
-  '规划哈沙德回复规划哈沙德回复规划哈沙德回复',
-  '规划哈沙德回复',
-  '规划哈沙德回复',
-  '规划哈沙德回复规划哈沙德回复规划哈沙德回复',
-  '规划哈沙德回复',
-  '规划哈沙德回复'
-])
 
 function useRecommend(value) {
   emits('useRecommend', value)
@@ -97,34 +73,36 @@ function useRecommend(value) {
             @typing="typing"
             @typingStopped="typingStopped"
           />
-          <div class="chat-item-wse">
-            <div class="chat-item-wse__title">Sources</div>
-            <el-row gutter="5">
-              <el-col :span="6" v-for="(source, index) in sourceList" :key="index">
+          <div class="chat-item-wse" v-if="sourceList.length > 0">
+            <div class="chat-item-wse__title">{{ $t('lang.sources') }}</div>
+            <el-row :gutter="5">
+              <el-col :span="8" v-for="(source, index) in sourceList" :key="index">
                 <el-card shadow="hover" class="source-container">
                   <div class="source-title">
-                    <span>{{ source.title }}</span>
+                    <el-link type="primary" :underline="false" target="_blank" :href="source.url">
+                      {{ source.title }}
+                    </el-link>
                   </div>
                   <div class="source-detail">
-                    {{ source.detail }}
+                    {{ source.text }}
                   </div>
                 </el-card>
               </el-col>
             </el-row>
           </div>
-          <div class="chat-item-wse">
-            <div class="chat-item-wse__title">Related</div>
+          <div class="chat-item-wse" v-if="relatedList.length > 0">
+            <div class="chat-item-wse__title">{{ $t('lang.related') }}</div>
             <el-tag
               class="recommend-prompt-tag"
               effect="plain"
               size="large"
               type="info"
-              v-for="(content, index) in relatedList"
+              v-for="(data, index) in relatedList"
               :key="index"
-              @click="useRecommend(content)"
+              @click="useRecommend(data.question)"
               round
             >
-              {{ content }}
+              {{ data.question }}
             </el-tag>
           </div>
         </template>
@@ -178,6 +156,7 @@ function useRecommend(value) {
         border-radius: 15px;
         .source-title {
           font-weight: bold;
+          cursor: pointer;
         }
       }
 

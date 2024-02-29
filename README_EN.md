@@ -25,6 +25,7 @@ English / [简体中文](./README.md)
 </div>
 
 ## :tada: 最近更新
+* :fire: [2024-02-29] [**支持网络搜索增强** :point_right:](./docs/支持网络搜索增强.md)
 * :fire: [2024-02-04] [**推出 Windows 桌面版 YuanChat.exe** :point_right:](./docs/推出Windows桌面版YuanChat.exe.md)
 * :fire: [2024-01-05] [**笔记本上快速部署Yuan大模型和YuanChat** :point_right:](./docs/在笔记本上快速部署YuanModel和YuanChat.md)
 ---

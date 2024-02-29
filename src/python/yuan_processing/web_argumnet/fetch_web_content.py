@@ -92,7 +92,7 @@ class WebContentFetcher:
 
 # Example usage
 if __name__ == "__main__":
-    fetcher = WebContentFetcher("What happened to Silicon Valley Bank")
+    fetcher = WebContentFetcher("What happened to Silicon Valley Bank", {})
     contents, serper_response = fetcher.fetch()
 
     print(serper_response)

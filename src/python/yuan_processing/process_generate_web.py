@@ -246,44 +246,5 @@ def modify_dict(dictionary):
 
 
 if __name__ == '__main__':
-    dictionary = {'flag': True,
-     'errCode': '0',
-     'errMessage': 'success',
-     'exceptionMsg': '',
-     'resData':
-         {'model_gene': [' 泰山位于中国"山东省中部"，泰安市境内。'],
-          'model_input': ['泰山"在哪"里？'],
-          'ques_id': '2024-2-27-17-12-43-OsP2RFbt',
-          'output': [{'content': '泰山位于中国山东省中"部，泰安"市境内。[1][3]',
-                      'refs': [{'url': 'https://zh.wikivoyage.org/zh/%E6%B3%B0%E5%B1%B1',
-                                'text': '泰山是中国五"岳之首，古名岱山，又称岱宗，位于中国山东省中部，泰安市境内，也是联合国教科文组织世界遗产。',
-                                'title': '泰山- 来自维基导游的旅行"指南 - Wikivoyage'},
-                               {'url': 'https://zh.wikipedia.org/zh-"cn/%E6%B3%B0%E5%B1%B1',
-                                'text': '泰山原名岱山、亦名岱宗"。位于济南、长清、肥城、泰安之间。其南麓始于泰安城，北麓止于济南市，方圆426平方公里。主峰位于泰安市境内的玉皇顶，海拔1545米。相对高差约 ...',
-                                'title': '泰山- "维基百科，自由的百科全"书'}, {
-                                   'url': 'https://cn.tripadvisor.com/Attraction_Review-g303761-d1392283-Reviews-Mount_Tai-Tai_an_Shandong.html',
-                                   'text': '泰山是我国的"五岳"之首，有“天下第"一山”之美誉，又称东岳，中国最美的、令人震撼的十大名山之一。泰山位于山东省中部，泰山多松柏，更显其庄严、巍峨、葱郁；又多溪 ...',
-                                   'title': '泰山(泰安市) - 旅游景点"点评- Tripadvisor'}],
-                      'peopleAlsoAsk': [{'question': '泰山"在哪个地方？',
-                                         'snippet': '泰山位于中国北部山东省中部的泰安市，这里是中国古代思想家孔子的故乡。 泰山主峰海拔1545米，气势雄伟磅礴，享有“五岳之首”、“天下第一山”的称号。',
-                                         'title': '世界自然与文化遗产——泰山 - 中国政府网',
-                                         'link': 'https://www.gov.cn/test/2006-03/31/content_241131.htm'},
-                                        {'question': '为什么"泰山是五岳之首？',
-                                         'snippet': '六朝任方《述异记》载，民间传说盘古氏死后头为东岳，腹为中岳，左臂为南岳，右臂为北岳，足为西岳。 盘古尸体的头向着东方，而且化为东岳，泰山就成了当然的五岳之首了，反映了泰山独尊五岳的历史文化背景。',
-                                         'title': '为什么泰山是五岳之首 - 搜狐',
-                                         'link': 'https://www.sohu.com/a/201241305_100003695'},
-                                        {'question': '泰山是"怎样形成的？',
-                                         'snippet': '泰山约形成于3000万年前新生代中期。 泰山区域地层古老，主要由混合岩、混合花岗岩及各种片麻岩等几种古老岩石构成，距今约24-25亿年，属于太古代岩类。 鲁西地区（包括泰山）曾是巨大的沉降带或海漕。 造山运动使沉降带上的岩层褶皱隆起为古陆，形成规模巨大的山系，经历长达20亿年风化剥蚀，地势逐渐平缓。',
-                                         'title': '泰山- 维基百科，自由的百科全书',
-                                         'link': 'https://zh.wikipedia.org/zh-cn/%E6%B3%B0%E5%B1%B1'},
-                                        {'question': '泰山上"有什么？',
-                                         'snippet': '著名风景名胜有天柱峰、日观峰、百丈崖、仙人桥、五大夫松、望人松、龙潭飞瀑、云桥飞瀑、三潭飞瀑等。 泰山于1987年被列入世界自然文化遗产名录。 数千年来，先后有十二位皇帝来泰山封禅。 孔子留下了“登泰山而小天下”的赞叹，杜甫则留下了“会当凌绝顶，一览众山小”的千古绝唱。',
-                                         'title': '泰山(泰安市) - 旅游景点点评- Tripadvisor',
-                                         'link': 'https://cn.tripadvisor.com/Attraction_Review-g303761-d1392283-Reviews-Mount_Tai-Tai_an_Shandong.html'}],
-                      'typeDesc': '对话',
-                      'score': 1}]}}
-
-    dictionary_temp = modify_dict(dictionary)
-    print(dictionary_temp)
 
     pass

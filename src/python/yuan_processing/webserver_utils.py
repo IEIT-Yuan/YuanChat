@@ -152,12 +152,12 @@ class WebResponseJson():
 if __name__ == '__main__':
     response = WebResponseJson()
     paras_dict = {"input":[{"question":"泰山在哪里？", "answer": ""}], 'multidialogue':True,
-                  "url":[["http://172.31.4.32:8900/yuan"]], "style":100,
+                  "url":[["http://127.0.0.1:8900/yuan"]], "style":100,
                   "response_length": 5000, "temperature": 0.6, "top_p": 0.95, "top_k": 0,
                   "retrieve_topk": 3,
                   "template": "说明：您是一位认真的研究者。使用提供的网络搜索结果，对给定的问题写一个全面而详细的回复。\n用语言回答：中文\n问题：",
-                  "embeddings_model_path": r"D:\E\Code\NLP\yuan_checkpoints\text2vec-base-chinese",
-                  "serper_api_key": "e4e726300b3804897d394c87fc50aa81357015b5"}
+                  "embeddings_model_path": "",
+                  "serper_api_key": ""}
     res = response.modelsYuanInfer_web(paras_dict)
 
     pass

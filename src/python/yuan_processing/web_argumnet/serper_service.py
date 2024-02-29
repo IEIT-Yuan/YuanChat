@@ -77,7 +77,7 @@ class SerperClient:
 
 # Usage example
 if __name__ == "__main__":    
-    client = SerperClient()
+    client = SerperClient("")
     query = "What happened to Silicon Valley Bank"
     response = client.serper(query)
     components = client.extract_components(response)

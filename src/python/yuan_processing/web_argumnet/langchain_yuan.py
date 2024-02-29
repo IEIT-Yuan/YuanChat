@@ -179,7 +179,7 @@ class Yuan2(LLM):
 
 
 def langchain_demo():
-    yuan_llm = Yuan2(infer_api="http://10.51.24.214:8900/yuan", max_tokens=1024, temp=1.0, top_p=0.9, top_k=40, use_history=False)
+    yuan_llm = Yuan2(infer_api="http://127.0.0.1:8900/yuan", max_tokens=1024, temp=1.0, top_p=0.9, top_k=40, use_history=False)
     print(yuan_llm)
     print(yuan_llm("What NFL team won the Super Bowl in the year Justin Beiber was born? Let's think step by step"))
 
@@ -190,14 +190,14 @@ from langchain.schema import LLMResult
 
 def test_yuan2_call() -> None:
     """Test valid call to Yuan2.0."""
-    llm = Yuan2(infer_api="http://10.51.24.214:8900/yuan", max_tokens=1024, temp=1.0, top_p=0.9, top_k=40, use_history=False)
+    llm = Yuan2(infer_api="http://127.0.0.1:8900/yuan", max_tokens=1024, temp=1.0, top_p=0.9, top_k=40, use_history=False)
     output = llm("写一段快速排序算法。")
     assert isinstance(output, str)
 
 
 def test_yuan2_generate() -> None:
     """Test valid call to Yuan2.0 inference api."""
-    llm = Yuan2(infer_api="http://10.51.24.214:8900/yuan", max_tokens=1024, temp=1.0, top_p=0.8, top_k=0, use_history=False)
+    llm = Yuan2(infer_api="http://127.0.0.1:8900/yuan", max_tokens=1024, temp=1.0, top_p=0.8, top_k=0, use_history=False)
     #output = llm.generate(["您是负责改进谷歌搜索结果的助理。生成三个类似于输入问题的谷歌搜索查询。输出应该是一个编号的问题列表，每个问题的末尾都应该有一个问号：what is vitamin？"])
     #output = llm.generate(["You are an assistant tasked with improving Google search results. Generate THREE Google search queries that are similar to this question. The output should be a numbered list of questions and each should have a question mark at the end: what is vitamin？"])
     output = llm.generate(["what is vitamin？"])
@@ -209,7 +209,7 @@ def test_yuan2_template() ->None:
     from langchain.chains import LLMChain
     from langchain.prompts import PromptTemplate
 
-    llm = Yuan2(infer_api="http://10.51.24.214:8900/yuan", max_tokens=1024, temp=1.0, top_p=0.9, top_k=40,
+    llm = Yuan2(infer_api="http://127.0.0.1:8900/yuan", max_tokens=1024, temp=1.0, top_p=0.9, top_k=40,
                 use_history=False)
     template = """{question}"""
     prompt = PromptTemplate(template=template, input_variables=["question"])

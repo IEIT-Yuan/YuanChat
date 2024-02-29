@@ -73,7 +73,6 @@ class LLMAnswer:
         output_format =  ""
         profile = ""
 
-        # llm = Yuan2(infer_api="http://172.31.4.32:8900/yuan", max_tokens=2048, temp=1.0, top_p=0.8, top_k=0, use_history=False)
         llm = Yuan2(infer_api=paras_dict["url"][0][0], max_tokens=paras_dict["response_length"],
                     temp=paras_dict["temperature"], top_p=paras_dict["top_p"], top_k=paras_dict["top_k"], use_history=False)
 

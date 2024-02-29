@@ -24,3 +24,16 @@ $color-blue-2: rgba(37, 164, 212, 0.2);
     )
   )
 );
+
+.el-dialog {
+  border-radius: 15px !important;
+  .el-dialog__title {
+    font-weight: bold;
+  }
+}
+
+.el-form {
+  .el-form-item__label {
+    font-weight: bold;
+  }
+}

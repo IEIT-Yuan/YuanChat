@@ -2,10 +2,12 @@
 import SideBar from './components/SideBar.vue'
 import ChatItem from './components/ChatItem.vue'
 import Welcome from './components/Welcome.vue'
+import Disclaimer from './components/Disclaimer.vue'
 import useDatabase from '@/hooks/useDatabase'
 import useSSE from '../hooks/useSSE'
 import useAppStore from '@/stores/app'
 import { Promotion } from '@element-plus/icons-vue'
+import WebSearchConfig from './components/WebSearchConfig.vue'
 import {
   getConversationList,
   getMessagesByConversionId,
@@ -16,6 +18,9 @@ import {
   deleteConversation as service_deleteConversation,
   editConversationName as service_editConversationName
 } from '@/services'
+import { nextTick } from 'vue'
+
+const app = useAppStore()
 
 const { db } = useDatabase()
 
@@ -89,21 +94,22 @@ const generateConversationName = () => {
   return 'New Chat'
 }
 
+const modelParams = app.modelParams
 const message = ref('')
+const webSearchEngine = ref(modelParams.browser_flag)
 
 function fetchResult(params) {
   return new Promise((resolve) => {
-    const modelParams = useAppStore().modelParams
     useSSE('/sse/subscribe', {
-      params: Object.assign({}, params, toRaw(modelParams)),
+      params: Object.assign({}, params, toRaw(app.getModelParams())),
       onmessage(ev) {
-        // console.log('ev', ev)
         try {
           const res = JSON.parse(ev.data)
+          console.log('res', res)
           const { flag, resData } = res
           if (flag) {
-            const { message } = resData
-            resolve(message)
+            // const { message } = resData
+            resolve(resData)
           }
         } catch (error) {
           console.error(error)
@@ -151,7 +157,7 @@ async function sendMessage() {
     isLoading: true
   })
   scrollToBottom()
-  const MESSAGES_COUNT = useAppStore().maxMultiTurns || 0
+  const MESSAGES_COUNT = app.maxMultiTurns || 0
   const _messages = messages.value.slice(-2 * (MESSAGES_COUNT + 1)).reduce((acc, cur) => {
     if (cur.sender) {
       if (cur.sender === 'USER') {
@@ -163,16 +169,25 @@ async function sendMessage() {
     return acc
   }, [])
   const params = {
-    messages: _messages
+    messages: _messages,
+    browser_flag: webSearchEngine.value
   }
   status.value = 'LOADING'
-  const resultMsg = await fetchResult(params)
+  const resData = await fetchResult(params)
+  const resultMsg = resData.message
+  const browser_flag = resData.browser_flag
+  const sources = resData.refs || []
+  const related = resData.peopleAlsoAsk || []
+
   // 构建result对象
   const result = {
     conversation_id: currentConversationId.value,
     sender: 'BOT',
     content: resultMsg,
-    feedback: 0 // 默认无反馈
+    feedback: 0, // 默认无反馈
+    webSearchFlag: browser_flag,
+    sources: sources,
+    related: related
   }
   await addMessage(result)
   messages.value = await getMessagesByConversionId(currentConversationId.value)
@@ -255,7 +270,6 @@ function getImageUrl(type, feedback) {
 
 // 更新回馈信息
 function sendFeedback(message, feedback) {
-  console.log(message.id, feedback)
   if (message.feedback === feedback) {
     feedback = 0
   }
@@ -264,6 +278,40 @@ function sendFeedback(message, feedback) {
     id: message.id
   }).then(() => {
     initMessages()
+  })
+}
+
+const dislcaimerModelFlag = ref(false)
+const disclainmerModelRef = ref(null)
+function openDisclainmerModel(type) {
+  dislcaimerModelFlag.value = true
+  nextTick(() => {
+    disclainmerModelRef.value.show(type)
+  })
+}
+
+const wsConfigRef = ref(null)
+const wsConfigFlag = ref(false)
+function webSearchEngineChange() {
+  if (webSearchEngine.value) {
+    webSearchEngine.value = false
+
+    app.setModelParams({
+      browser_flag: webSearchEngine.value
+    })
+  } else {
+    wsConfigFlag.value = true
+    nextTick(() => {
+      wsConfigRef.value.show()
+    })
+  }
+}
+
+function wsConfigSuccess() {
+  webSearchEngine.value = true
+  wsConfigFlag.value = false
+  app.setModelParams({
+    browser_flag: webSearchEngine.value
   })
 }
 </script>
@@ -290,8 +338,12 @@ function sendFeedback(message, feedback) {
                 :sender="msg.sender"
                 :isLoading="msg.isLoading"
                 :is-new="msg.isNew"
+                :webSearchFlag="msg.webSearchFlag"
+                :sourceList="msg.sources"
+                :relatedList="msg.related"
                 @update="messageUpdate"
                 @typingStopped="typingStopped"
+                @useRecommend="useRecommend"
               />
               <div class="chat-feedback" v-if="msg.sender === 'BOT'">
                 <img
@@ -322,6 +374,15 @@ function sendFeedback(message, feedback) {
             @keydown="keydown($event)"
           />
           <div class="chat-input-btn_container">
+            <el-tooltip
+              :content="webSearchEngine ? $t('lang.wsEnabled') : $t('lang.wsDisabled')"
+              placement="top"
+            >
+              <el-button class="chat-input-btn" @click="webSearchEngineChange">
+                <img v-if="webSearchEngine" src="@/assets/network.svg" class="input-icon" alt="" />
+                <img v-else src="@/assets/network_disconnected.svg" class="input-icon" alt="" />
+              </el-button>
+            </el-tooltip>
             <el-button
               class="chat-input-btn"
               :icon="Promotion"
@@ -330,9 +391,35 @@ function sendFeedback(message, feedback) {
             ></el-button>
           </div>
         </div>
+        <div class="disclaimer-container">
+          {{ $t('lang.disclaimer') }}
+          <el-link
+            type="primary"
+            style="font-size: 12px"
+            @click="openDisclainmerModel('yuanModel')"
+          >
+            《源2.0模型开源许可协议》
+          </el-link>
+          {{ $t('lang.and') }}
+          <el-link type="primary" style="font-size: 12px" @click="openDisclainmerModel('yuanChat')">
+            《YuanChat开源许可协议》
+          </el-link>
+          。
+        </div>
       </div>
     </el-main>
   </el-container>
+  <Disclaimer
+    ref="disclainmerModelRef"
+    v-if="dislcaimerModelFlag"
+    @close="dislcaimerModelFlag = false"
+  />
+  <WebSearchConfig
+    ref="wsConfigRef"
+    v-if="wsConfigFlag"
+    @close="wsConfigFlag = false"
+    @success="wsConfigSuccess"
+  />
 </template>
 
 <style scoped lang="scss">
@@ -360,7 +447,6 @@ function sendFeedback(message, feedback) {
       margin: 0 auto;
       flex: 1;
       overflow-y: auto;
-      scrollbar-width: thin;
       padding-bottom: 24px;
 
       &::-webkit-scrollbar {
@@ -401,7 +487,6 @@ function sendFeedback(message, feedback) {
       .chat-input-btn_container {
         align-items: center;
         display: flex;
-        flex-direction: column;
         position: absolute;
         bottom: 5px;
         right: 10px;
@@ -425,8 +510,18 @@ function sendFeedback(message, feedback) {
             border-color: $color-white-3;
             color: $color-grey-1;
           }
+
+          .input-icon {
+            width: 24px;
+            height: 24px;
+          }
         }
       }
+    }
+
+    .disclaimer-container {
+      font-size: 12px;
+      margin-top: 10px;
     }
   }
 }

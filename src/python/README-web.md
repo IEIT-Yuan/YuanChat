@@ -5,7 +5,7 @@
 </div>
 
 ## 基本原理
-![img.png](images/img.png)
+![img.png](../../docs/images/support-web-search/system-principle.png)
 
 整体流程如下：
 

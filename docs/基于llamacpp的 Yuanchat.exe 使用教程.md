@@ -1,15 +1,27 @@
 # 基于llamacpp的 Yuanchat.exe 使用教程
 
 ## 1. 配置要求 
-* 内存: 16GB及以上
+* 可使用内存：400MB以上
 * 系统: windows10/11 64位
 
 ## 2. 软件下载
 ### 2.1 百度云盘
 **链接**：https://pan.baidu.com/s/1fVWKNL-GQum4PCsU8YNruQ?pwd=qq4g
 
+> 本版本只适用于`gguf`格式模型。
+
+### 2.2 版本对比
+
+|      | 前一版本     | 当前版本               |
+|------|--------|--------------------|
+| 内存要求 | 16GB | 400MB以上            |
+| 推理速度 |  | 5 tokens左右，受限于个人电脑 |
+|
 
 ## 3. 运行YuanChat.exe
+
+![yuanchat-home](./images/yuanchatexe/llama-cpp/home.gif)
+
 > `YuanChat.exe`占用本地的`5050`端口，如果系统中有其他应用占用了此端口会导致`YuanChat.exe`启动失败，请使用前确认系统环境。
 
 `YuanChat.exe`支持两种方式对模型进行加载: **本地模型** 和 **在线加载（ModelScope）**

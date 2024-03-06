@@ -12,11 +12,20 @@
 
 ### 2.2 版本对比
 
-|      | 前一版本     | 当前版本               |
-|------|--------|--------------------|
-| 内存要求 | 16GB | 400MB以上            |
-| 推理速度 |  | 5 tokens左右，受限于个人电脑 |
-|
+<table>
+<tr>
+<th rowspan="2">推理性能</th><th>GGUF格式（C++）</th><th>HF格式（Python）</th><th>加速比</th>
+</tr>
+<tr>
+<td align="center">9.34 tokens/s</td><td align="center">1.21 tokens/s</td><td align="center">7.72</td>
+</tr>
+<tr>
+<th rowspan="2">内存占用</th><th>GGUF格式（C++）</th><th>HF格式（Python）</th><th>内存占比（GGUF/HF）</th>
+</tr>
+<tr>
+<td align="center">~0.4 GB</td><td align="center">~8.6 GB</td><td align="center">4.65%</td>
+</tr>
+</table>
 
 ## 3. 运行YuanChat.exe
 

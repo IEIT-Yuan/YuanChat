@@ -1,5 +1,26 @@
 # 基于llamacpp的 Yuanchat.exe 使用教程
 
+## 版本对比
+<table>
+<tr>
+<th rowspan="2">推理性能</th><th>GGUF格式（C++）</th><th>HF格式（Python）</th><th>加速比</th>
+</tr>
+<tr>
+<td align="center">9.34 tokens/s</td><td align="center">1.21 tokens/s</td><td align="center">7.72</td>
+</tr>
+<tr>
+<th rowspan="2">内存占用</th><th>GGUF格式（C++）</th><th>HF格式（Python）</th><th>内存比（GGUF/HF）</th>
+</tr>
+<tr>
+<td align="center">~0.4 GB</td><td align="center">~8.6 GB</td><td align="center">4.65%</td>
+</tr>
+</table>
+
+## 效果
+
+![yuanchat-home](./images/yuanchatexe/llama-cpp/home.gif)
+
+
 ## 1. 配置要求 
 * 可使用内存：400MB以上
 * 系统: windows10/11 64位
@@ -10,26 +31,7 @@
 
 > 本版本只适用于`gguf`格式模型。
 
-### 2.2 版本对比
-
-<table>
-<tr>
-<th rowspan="2">推理性能</th><th>GGUF格式（C++）</th><th>HF格式（Python）</th><th>加速比</th>
-</tr>
-<tr>
-<td align="center">9.34 tokens/s</td><td align="center">1.21 tokens/s</td><td align="center">7.72</td>
-</tr>
-<tr>
-<th rowspan="2">内存占用</th><th>GGUF格式（C++）</th><th>HF格式（Python）</th><th>内存占比（GGUF/HF）</th>
-</tr>
-<tr>
-<td align="center">~0.4 GB</td><td align="center">~8.6 GB</td><td align="center">4.65%</td>
-</tr>
-</table>
-
 ## 3. 运行YuanChat.exe
-
-![yuanchat-home](./images/yuanchatexe/llama-cpp/home.gif)
 
 > `YuanChat.exe`占用本地的`5050`端口，如果系统中有其他应用占用了此端口会导致`YuanChat.exe`启动失败，请使用前确认系统环境。
 

@@ -53,12 +53,12 @@ function useRecommend(content) {
   </div>
 </template>
 
-<style scoped lang="less">
+<style scoped lang="scss">
 .welcome-container {
   box-sizing: border-box;
   padding: 14px 24px;
-  color: @color-black;
-  background-color: @color-white;
+  color: $color-black;
+  background-color: $color-white;
   border-radius: 10px;
   width: 100%;
   flex: 1;
@@ -68,26 +68,32 @@ function useRecommend(content) {
   .recommend-prompt_row {
     margin: 10px auto;
     text-align: left;
-    color: @color-black-1;
+    color: $color-black-1;
     font-size: 14px;
 
     .refresh-prompt_opt {
       margin-left: 10px;
-      color: @color-primary;
+      color: $color-primary;
     }
 
     .recommend-prompt_title {
-      color: @color-black-1;
+      color: $color-black-1;
     }
 
     .recommend-prompt-tag {
       margin-right: 10px;
       margin-bottom: 10px;
       cursor: pointer;
-      background-color: @color-grey-3;
-      color: @color-black-1;
+      background-color: $color-grey-3;
+      color: $color-black-1;
       font-size: 14px;
       white-space: pre-wrap;
+      border: none;
+      padding: 20px;
+      border-radius: 10px;
+      &:hover {
+        background-color: $color-blue-2;
+      }
     }
   }
 }

@@ -25,7 +25,10 @@
 </div>
 
 ## :tada: 最近更新
-* :fire: [**笔记本上快速部署Yuan大模型和YuanChat** :point_right:](./docs/在笔记本上快速部署YuanModel和YuanChat.md)
+* :fire: [2024-03-06] [**基于llamacpp的 Yuanchat.exe 使用教程** :point_right:](./docs/基于llamacpp的Yuanchat.exe使用教程.md)
+* :fire: [2024-02-29] [**支持网络搜索增强** :point_right:](./docs/支持网络搜索增强.md)
+* :fire: [2024-02-04] [**推出 Windows 桌面版 YuanChat.exe** :point_right:](./docs/推出Windows桌面版YuanChat.exe.md)
+* :fire: [2024-01-05] [**笔记本上快速部署Yuan大模型和YuanChat** :point_right:](./docs/在笔记本上快速部署YuanModel和YuanChat.md)
 ---
 <!-- TODO -->
 <!-- TABLE OF CONTENTS -->
@@ -118,7 +121,7 @@ docker run --rm -d --name yuanchat -p 5050:5050 -e YUAN_2_URL=http://ip:port/yua
 
 在源码部署之前，你需要安装以下开发环境
 
-- [Pyhton](https://www.python.org/downloads/) 3.8+
+- [Python](https://www.python.org/downloads/) 3.8+
 - [nodejs](https://nodejs.org/) 18+
 - [Yuan-2.0](https://github.com/IEIT-Yuan/Yuan-2.0/tree/main), 部署 Docker [参考](https://github.com/IEIT-Yuan/Yuan-2.0/blob/main/README.md#%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8), 获取推理服务的 request url：`http://127.0.0.1:8000` [参考](https://github.com/IEIT-Yuan/Yuan-2.0/blob/main/docs/inference_server_cn.md)
 - [Chrome](https://www.google.com/chrome)

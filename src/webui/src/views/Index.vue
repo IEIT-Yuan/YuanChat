@@ -2,18 +2,25 @@
 import SideBar from './components/SideBar.vue'
 import ChatItem from './components/ChatItem.vue'
 import Welcome from './components/Welcome.vue'
+import Disclaimer from './components/Disclaimer.vue'
 import useDatabase from '@/hooks/useDatabase'
 import useSSE from '../hooks/useSSE'
 import useAppStore from '@/stores/app'
+import { Promotion } from '@element-plus/icons-vue'
+import WebSearchConfig from './components/WebSearchConfig.vue'
 import {
   getConversationList,
   getMessagesByConversionId,
   addMessage,
   updateMessage,
   addConversation,
+  updateFeedback,
   deleteConversation as service_deleteConversation,
   editConversationName as service_editConversationName
 } from '@/services'
+import { nextTick } from 'vue'
+
+const app = useAppStore()
 
 const { db } = useDatabase()
 
@@ -23,6 +30,7 @@ watch(
   () => currentConversationId.value,
   async () => {
     messages.value = await getMessagesByConversionId(currentConversationId.value)
+    status.value = ''
     nextTick(() => {
       scrollToBottom()
     })
@@ -86,21 +94,22 @@ const generateConversationName = () => {
   return 'New Chat'
 }
 
+const modelParams = app.modelParams
 const message = ref('')
+const webSearchEngine = ref(modelParams.browser_flag)
 
 function fetchResult(params) {
   return new Promise((resolve) => {
-    const modelParams = useAppStore().modelParams
     useSSE('/sse/subscribe', {
-      params: Object.assign({}, params, toRaw(modelParams)),
+      params: Object.assign({}, params, toRaw(app.getModelParams())),
       onmessage(ev) {
-        console.log('ev', ev)
         try {
           const res = JSON.parse(ev.data)
+          console.log('res', res)
           const { flag, resData } = res
           if (flag) {
-            const { message } = resData
-            resolve(message)
+            // const { message } = resData
+            resolve(resData)
           }
         } catch (error) {
           console.error(error)
@@ -148,8 +157,7 @@ async function sendMessage() {
     isLoading: true
   })
   scrollToBottom()
-  const MESSAGES_COUNT = useAppStore().maxMultiTurns || 0
-  console.log('MESSAGES_COUNT', MESSAGES_COUNT)
+  const MESSAGES_COUNT = app.maxMultiTurns || 0
   const _messages = messages.value.slice(-2 * (MESSAGES_COUNT + 1)).reduce((acc, cur) => {
     if (cur.sender) {
       if (cur.sender === 'USER') {
@@ -161,15 +169,25 @@ async function sendMessage() {
     return acc
   }, [])
   const params = {
-    messages: _messages
+    messages: _messages,
+    browser_flag: webSearchEngine.value
   }
   status.value = 'LOADING'
-  const resultMsg = await fetchResult(params)
+  const resData = await fetchResult(params)
+  const resultMsg = resData.message
+  const browser_flag = resData.browser_flag
+  const sources = resData.refs || []
+  const related = resData.peopleAlsoAsk || []
+
   // 构建result对象
   const result = {
     conversation_id: currentConversationId.value,
     sender: 'BOT',
-    content: resultMsg
+    content: resultMsg,
+    feedback: 0, // 默认无反馈
+    webSearchFlag: browser_flag,
+    sources: sources,
+    related: related
   }
   await addMessage(result)
   messages.value = await getMessagesByConversionId(currentConversationId.value)
@@ -239,6 +257,63 @@ function keydown(e) {
 function useRecommend(content) {
   message.value = content
 }
+
+function getImageUrl(type, feedback) {
+  let path = ''
+  if (type === 1) {
+    path = feedback === 1 ? 'icon_thumb_up_active' : 'icon_thumb_up_default'
+  } else if (type === 2) {
+    path = feedback === 2 ? 'icon_thumb_down_active' : 'icon_thumb_down_default'
+  }
+  return `${import.meta.env.BASE_URL}icons/${path}.png`
+}
+
+// 更新回馈信息
+function sendFeedback(message, feedback) {
+  if (message.feedback === feedback) {
+    feedback = 0
+  }
+  updateFeedback({
+    feedback,
+    id: message.id
+  }).then(() => {
+    initMessages()
+  })
+}
+
+const dislcaimerModelFlag = ref(false)
+const disclainmerModelRef = ref(null)
+function openDisclainmerModel(type) {
+  dislcaimerModelFlag.value = true
+  nextTick(() => {
+    disclainmerModelRef.value.show(type)
+  })
+}
+
+const wsConfigRef = ref(null)
+const wsConfigFlag = ref(false)
+function webSearchEngineChange() {
+  if (webSearchEngine.value) {
+    webSearchEngine.value = false
+
+    app.setModelParams({
+      browser_flag: webSearchEngine.value
+    })
+  } else {
+    wsConfigFlag.value = true
+    nextTick(() => {
+      wsConfigRef.value.show()
+    })
+  }
+}
+
+function wsConfigSuccess() {
+  webSearchEngine.value = true
+  wsConfigFlag.value = false
+  app.setModelParams({
+    browser_flag: webSearchEngine.value
+  })
+}
 </script>
 
 <template>
@@ -263,9 +338,25 @@ function useRecommend(content) {
                 :sender="msg.sender"
                 :isLoading="msg.isLoading"
                 :is-new="msg.isNew"
+                :webSearchFlag="msg.webSearchFlag"
+                :sourceList="msg.sources"
+                :relatedList="msg.related"
                 @update="messageUpdate"
                 @typingStopped="typingStopped"
+                @useRecommend="useRecommend"
               />
+              <div class="chat-feedback" v-if="msg.sender === 'BOT'">
+                <img
+                  @click="sendFeedback(msg, 1)"
+                  :src="getImageUrl(1, msg.feedback)"
+                  class="icon"
+                />
+                <img
+                  @click="sendFeedback(msg, 2)"
+                  :src="getImageUrl(2, msg.feedback)"
+                  class="icon"
+                />
+              </div>
             </div>
           </template>
           <template v-else>
@@ -274,35 +365,66 @@ function useRecommend(content) {
         </div>
         <div class="chat-input_container">
           <el-input
-            class="chat-input"
             v-model="message"
+            class="chat-input"
             type="textarea"
             resize="none"
-            :autosize="{ minRows: 2, maxRows: 4 }"
+            :autosize="{ minRows: 3, maxRows: 6 }"
             :placeholder="$t('lang.inputPlaceholder')"
             @keydown="keydown($event)"
           />
           <div class="chat-input-btn_container">
+            <el-tooltip
+              :content="webSearchEngine ? $t('lang.wsEnabled') : $t('lang.wsDisabled')"
+              placement="top"
+            >
+              <el-button class="chat-input-btn" @click="webSearchEngineChange">
+                <img v-if="webSearchEngine" src="@/assets/network.svg" class="input-icon" alt="" />
+                <img v-else src="@/assets/network_disconnected.svg" class="input-icon" alt="" />
+              </el-button>
+            </el-tooltip>
             <el-button
-              type="primary"
               class="chat-input-btn"
+              :icon="Promotion"
               @click="sendMessage"
               :disabled="!message || 'LOADING' === status"
-            >
-              {{ $t('lang.send') }}
-            </el-button>
+            ></el-button>
           </div>
+        </div>
+        <div class="disclaimer-container">
+          {{ $t('lang.disclaimer') }}
+          <el-link
+            type="primary"
+            style="font-size: 12px"
+            @click="openDisclainmerModel('yuanModel')"
+          >
+            《源2.0模型开源许可协议》
+          </el-link>
+          {{ $t('lang.and') }}
+          <el-link type="primary" style="font-size: 12px" @click="openDisclainmerModel('yuanChat')">
+            《YuanChat开源许可协议》
+          </el-link>
+          。
         </div>
       </div>
     </el-main>
   </el-container>
+  <Disclaimer
+    ref="disclainmerModelRef"
+    v-if="dislcaimerModelFlag"
+    @close="dislcaimerModelFlag = false"
+  />
+  <WebSearchConfig
+    ref="wsConfigRef"
+    v-if="wsConfigFlag"
+    @close="wsConfigFlag = false"
+    @success="wsConfigSuccess"
+  />
 </template>
 
-<style scoped lang="less">
+<style scoped lang="scss">
 .chat-page_wrapper {
-  background-color: @color-white-2;
   overflow: auto;
-
   .chat-main_wrapper {
     display: flex;
     flex-direction: column;
@@ -325,12 +447,27 @@ function useRecommend(content) {
       margin: 0 auto;
       flex: 1;
       overflow-y: auto;
-      scrollbar-width: thin;
       padding-bottom: 24px;
-      //scroll-behavior: smooth;
 
       &::-webkit-scrollbar {
         width: 0;
+      }
+
+      .chat-feedback {
+        display: flex;
+        justify-content: flex-end;
+        .icon {
+          display: inline-block;
+          width: 18px;
+          height: 18px;
+          margin-top: 5px;
+          margin-right: 5px;
+          cursor: pointer;
+          padding: 5px;
+          &:hover {
+            background-color: $color-blue-2;
+          }
+        }
       }
     }
 
@@ -342,48 +479,49 @@ function useRecommend(content) {
       margin: 0 auto;
 
       .chat-input {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        max-width: 1135px;
-        margin: 0 auto;
-        box-shadow: 3px 3px 7px 1px rgba(0, 75, 174, 0.15);
-        border-radius: 15px;
-
         :deep(.el-textarea__inner) {
-          background-color: @color-white;
-          border: none;
-          border-radius: 15px;
-          padding-right: 86px;
-
-          &:focus {
-            border: solid 1px #0070e0;
-          }
+          border-radius: 10px;
         }
       }
 
       .chat-input-btn_container {
         align-items: center;
         display: flex;
-        flex-direction: column;
         position: absolute;
         bottom: 5px;
         right: 10px;
 
         .chat-input-btn {
-          width: 70px;
+          width: 40px;
           height: 40px;
-          border-radius: 25px;
+          border-radius: 10%;
+          border: none;
           text-align: center;
-          background-image: linear-gradient(90deg, @color-blue-1 0%, @color-blue-2 100%);
+          font-size: 24px;
+          &:not(.is-disabled)::v-deep(.el-icon) {
+            color: $color-primary;
+          }
+          &:hover {
+            color: inherit;
+            background-color: $color-white-4;
+          }
 
           &.is-disabled {
-            background-image: linear-gradient(90deg, @color-grey-2 0%, @color-grey-2 100%);
-            border-color: @color-white-3;
-            color: @color-grey-1;
+            border-color: $color-white-3;
+            color: $color-grey-1;
+          }
+
+          .input-icon {
+            width: 24px;
+            height: 24px;
           }
         }
       }
+    }
+
+    .disclaimer-container {
+      font-size: 12px;
+      margin-top: 10px;
     }
   }
 }

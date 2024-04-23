@@ -130,8 +130,8 @@ window.handleCopy = (codeId) => {
   <el-link v-if="!timerStopped" @click="stopTyping">{{ $t('lang.stopTyping') }}</el-link>
 </template>
 
-<style scoped lang="less">
-@import './code.less';
+<style scoped lang="scss">
+@import './code.scss';
 
 .content_markdown {
   &::v-deep(> p) {

@@ -24,6 +24,13 @@ English / [简体中文](./README.md)
 
 </div>
 
+## :tada: 最近更新
+* :fire: [2024-03-06] [**基于llamacpp的Yuanchat.exe使用教程** :point_right:](./docs/基于llamacpp的 Yuanchat.exe 使用教程.md)
+* :fire: [2024-02-29] [**支持网络搜索增强** :point_right:](./docs/支持网络搜索增强.md)
+* :fire: [2024-02-04] [**推出 Windows 桌面版 YuanChat.exe** :point_right:](./docs/推出Windows桌面版YuanChat.exe.md)
+* :fire: [2024-01-05] [**笔记本上快速部署Yuan大模型和YuanChat** :point_right:](./docs/在笔记本上快速部署YuanModel和YuanChat.md)
+---
+
 <!-- TODO -->
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -116,7 +123,7 @@ Open link [http://localhost:5050](http://localhost:5050) in browser , if everyth
 
 Before deploy with source code, you need to setup development environment:
 
-- [Pyhton](https://www.python.org/downloads/) 3.8+
+- [Python](https://www.python.org/downloads/) 3.8+
 - [nodejs](https://nodejs.org/) 18+
 - [Yuan-2.0](https://github.com/IEIT-Yuan/Yuan-2.0/tree/main), deploy docker [instruction](https://github.com/IEIT-Yuan/Yuan-2.0/blob/main/README-EN.md#quick-start), run inference get model request url http://127.0.0.1:8000
 - [Chrome](https://www.google.com/chrome)

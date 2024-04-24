@@ -124,5 +124,21 @@
 ![init5](./images/yuanchat-new-common-v1.0/run_knowledge_file.png)
 
 
+**使用网络检索增强**
+
+同之前[支持网络搜素增强](支持网络搜索增强.md)介绍的功能，当前版本支持使用网络检索增强，网络搜索使用的是搜索引擎服务Serper，因此首先需要准备搜索引擎服务Serper的API Key，通过 https://serpapi.com/ 注册获取。
+
+使用时，需要先开启网络检索的开关，
+
+![init5](./images/yuanchat-new-common-v1.0/run_web_search_location.png)
+
+打开后需要配置基本信息，
+
+![init5](./images/yuanchat-new-common-v1.0/run_web_search_config.png)
+
+配置完成，就可以使用了。
+
+![init5](./images/yuanchat-new-common-v1.0/run_web_search_config_show.png)
+
 ## 4. 问题反馈
 如果在使用程序过程中有任何问题，欢迎在本项目的`issue`中进行提问

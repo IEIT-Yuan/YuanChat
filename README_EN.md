@@ -25,6 +25,7 @@ English / [简体中文](./README.md)
 </div>
 
 ## :tada: 最近更新
+* :fire: [2024-04-25] [**YuanChat全面升级：知识库、网络检索、全新交互体验、适配CPU** :point_right:](./docs/YuanChat全面升级通用版本.md)
 * :fire: [2024-04-23] [**YuanChat全面升级：知识库、网络检索、全新交互体验、适配intel XPU** :point_right:](./docs/YuanChat全面升级XPU版本.md)
 * :fire: [2024-03-06] [**基于llamacpp的Yuanchat.exe使用教程** :point_right:](./docs/基于llamacpp的 Yuanchat.exe 使用教程.md)
 * :fire: [2024-02-29] [**支持网络搜索增强** :point_right:](./docs/支持网络搜索增强.md)

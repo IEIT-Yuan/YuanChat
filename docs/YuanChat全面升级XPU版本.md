@@ -10,14 +10,14 @@
 * 重新设计软件界面，布局更合理，操作更方便
 * 英特尔® 酷睿™ Ultra处理器平台（XPU）适配，推理速度24 token/s
 
-> ***本次更新为YuanChat XPU版本，通用版本近期发布***
+> ***本次更新为YuanChat XPU版本，通用版本详见 [YuanChat全面升级通用版本](./YuanChat全面升级通用版本.md) ***
 ## 1. 配置要求 
 * 可使用内存：4GB 以上
 * 系统: windows10/11 64位
 
 ## 2. 软件下载
 ### 2.1 百度云盘
-**链接**：https://pan.baidu.com/s/12w6lC7ILp4fKrXYefhlHdw?pwd=74y3 
+**链接**：
 
 
 ## 3. 安装和运行
@@ -25,7 +25,7 @@
 > `YuanChat.exe`占用本地的`5050`端口，如果系统中有其他应用占用了此端口会导致`YuanChat.exe`启动失败，请使用前确认系统环境。
 
 ### 3.1 安装
-通过此[链接](https://pan.baidu.com/s/12w6lC7ILp4fKrXYefhlHdw?pwd=74y3 )下载`YuanChat`的安装包，根据提示进行安装部署
+通过此[链接]()下载`YuanChat`的安装包，根据提示进行安装部署
 
 **安装1**
 

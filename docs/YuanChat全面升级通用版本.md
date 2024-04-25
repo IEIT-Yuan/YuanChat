@@ -9,7 +9,7 @@
 * 多模型适配
 * 重新设计软件界面，布局更合理，操作更方便
 
-> ***本次更新为YuanChat CPU通用版本，支持XPU，详见 [YuanChat全面升级XPU版本](./YuanChat全面升级XPU版本.md) ***
+> ***本次更新为YuanChat CPU通用版本，支持XPU，详见 [YuanChat全面升级XPU版本](./YuanChat全面升级XPU版本.md)***
 ## 1. 配置要求 
 * 可使用内存：4GB 以上
 * 系统: windows10/11 64位

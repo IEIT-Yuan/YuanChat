@@ -10,7 +10,7 @@
 * 重新设计软件界面，布局更合理，操作更方便
 * 英特尔® 酷睿™ Ultra处理器平台（XPU）适配，推理速度24 token/s
 
-> ***本次更新为YuanChat XPU版本，通用版本详见 [YuanChat全面升级通用版本](./YuanChat全面升级通用版本.md) ***
+> ***本次更新为YuanChat XPU版本，通用版本详见 [YuanChat全面升级通用版本](./YuanChat全面升级通用版本.md)***
 ## 1. 配置要求 
 * 可使用内存：4GB 以上
 * 系统: windows10/11 64位

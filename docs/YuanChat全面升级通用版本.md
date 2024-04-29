@@ -16,7 +16,7 @@
 
 ## 2. 软件下载
 ### 2.1 百度云盘
-**链接**：
+**链接**： https://pan.baidu.com/s/13-1L0K6N1agMw5gZbl5xeg?pwd=7ap1
 
 
 ## 3. 安装和运行
@@ -24,7 +24,7 @@
 > `YuanChat.exe`占用本地的`5050`端口，如果系统中有其他应用占用了此端口会导致`YuanChat.exe`启动失败，请使用前确认系统环境。
 
 ### 3.1 安装
-通过此[链接]()下载`YuanChat`的安装包，根据提示进行安装部署
+通过此[链接](https://pan.baidu.com/s/13-1L0K6N1agMw5gZbl5xeg?pwd=7ap1)下载`YuanChat`的安装包，根据提示进行安装部署
 
 **安装1**
 

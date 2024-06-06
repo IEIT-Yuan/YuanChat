@@ -25,7 +25,6 @@
 ## 2. 安装运行
 
 **下载链接**：
-
 [百度云盘](https://pan.baidu.com/s/14tWYodf2fd9tOpOEwh7UUA?pwd=ifwp) |
 [阿里云盘](https://www.alipan.com/s/dfJrFSnUhkT)
 

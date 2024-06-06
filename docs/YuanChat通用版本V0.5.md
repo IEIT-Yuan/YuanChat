@@ -24,6 +24,8 @@
 
 ## 2. 安装运行
 
+**下载链接**：https://pan.baidu.com/s/14tWYodf2fd9tOpOEwh7UUA?pwd=ifwp
+ 
 同之前安装步骤，请参照[**YuanChat全面升级：知识库、网络检索、全新交互体验、适配CPU** :point_right:](./docs/YuanChat全面升级通用版本.md)
 
 ## 3. 详细介绍

@@ -25,6 +25,7 @@ English / [简体中文](./README.md)
 </div>
 
 ## :tada: 最近更新
+* :fire: [2024-06-14] [**`not found libllama.dll`问题修复补丁** :point_right:](./docs/YuanChat_libllama_not_found_patch.md)
 * :fire: [2024-05-31] [**YuanChat V0.5 通用版本升级：知识库、网络检索、插件市场、模型管理功能增强** :point_right:](./docs/YuanChat通用版本V0.5.md)
 * :fire: [2024-04-29] [**全新YuanChat个人助手版本：多模型推理（with ModelScope）、RAG检索、网络搜索、文档阅读，支持CPU Only运行** :point_right:](./docs/YuanChat全面升级通用版本.md)
 * :fire: [2024-04-23] [**YuanChat全面升级：知识库、网络检索、全新交互体验、适配intel XPU** :point_right:](./docs/YuanChat全面升级XPU版本.md)

@@ -1,5 +1,9 @@
 # YUANCHAT补丁程序使用说明
 
+### 🌟 补丁下载地址
+[百度云盘](链接：https://pan.baidu.com/s/1gGMiY--YSZVX5lFl5IuQYQ?pwd=r2i7) |
+[阿里云盘](https://www.alipan.com/s/Q2asLEkTa3i)
+
 此补丁程序是在加载或使用YUAN GGUF相关模型时，如果产生报错，则按照如下的方法运行设置。
 
 ### 🌟 步骤 1

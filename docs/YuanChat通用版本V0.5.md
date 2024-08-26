@@ -65,9 +65,12 @@
 ![知识库能力提升](./images/yuanchat-common-v1.0-upgrade/knowledge_embedding_select.png)
 
 ### 3.3 增强网络检索能力
-本次支持，增强了网络检索能力，支持了`bing`检索，可以选择`serper`和`bing`两种方式进行检索增强，具体如下：
+本次更新，增强了网络检索能力，支持了`bing`检索，可以选择`Serper`和`bing`两种方式进行检索增强，具体如下：
 
 ![网络检索增强](./images/yuanchat-common-v1.0-upgrade/web_search_select.png)
+
+其中，`Serper`检索方式，需要准备搜索引擎服务`Serper`的`API Key`，通过 https://serpapi.com/ 注册获取。
+
 
 ### 3.4 新增插件市场
 

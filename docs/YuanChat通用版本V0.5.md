@@ -28,7 +28,21 @@
 [百度云盘](https://pan.baidu.com/s/14tWYodf2fd9tOpOEwh7UUA?pwd=ifwp) |
 [阿里云盘](https://www.alipan.com/s/dfJrFSnUhkT)
 
-同之前安装步骤，请参照[**YuanChat全面升级：知识库、网络检索、全新交互体验、适配CPU** :point_right:](./docs/YuanChat全面升级通用版本.md)
+**安装1**
+
+![安装步骤1](./images/yuanchat-new-common-v1.0/install_1.png)
+
+**安装2**
+
+![安装步骤2](./images/yuanchat-new-common-v1.0/install_2.png)
+
+**安装3**
+
+![安装步骤3](./images/yuanchat-new-common-v1.0/install_3.png)
+
+**安装4**
+
+![安装步骤4](./images/yuanchat-new-common-v1.0/install_4.png)
 
 ## 3. 详细介绍
 

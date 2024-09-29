@@ -1,6 +1,6 @@
 # YuanPPT 幻灯片生成工具
 
-![](doc/images/begin.png)
+![](images/pptv1/begin.png)
 
 `YuanPPT` 幻灯片生成工具是`Yuan-2.0`的一部分。以`YuanChat`为主要后台推理服务，同时也兼容以`Ollama`作为推理服务。通过使用`YuanPPT`，可以让用户轻松地按照主题生成和修改幻灯片。
 
@@ -40,7 +40,7 @@ streamlit run app.py
 
 2. YuanChat开启API Server功能
 
-     ![apiserver](doc/images/yuanchat_enable_apiserver.png)
+     ![apiserver](images/pptv1/yuanchat_enable_apiserver.png)
 
 支持配置 API Server 功能。配置服务端口，开启服务（服务记录上次使用端口，默认为 5051）。服务开启后，可查看 API server 支持的模型列表；支持模型输出数据转换为 openAI 格式。 可以通过配置参数开启/关闭 API Server 功能，并设置 API Server 服务的端口号。
 
@@ -96,16 +96,20 @@ port = "11434"
 
 访问 URL: [http://localhost:8501](http://localhost:8501)
 
-![开始界面](./doc/images/begin.png)
+![开始界面](images/pptv1/begin.png)
 
 1.在文本框中输入一个主题;
 
-![大纲生成](./doc/images/prompt_display.png)
+![大纲生成](images/pptv1/prompt_display.png)
 
 2.PPT 生成后，按下载按钮下载 ppt;
 
-![下载PPT](./doc/images/PPTdownload.png)
+![下载PPT](images/pptv1/PPTdownload.png)
 
 3.如果要重建某些章节，请输入“修改第 XX 章”，按 Enter 键并重复 2 中的步骤.
 
-![修改章节大纲](./doc/images/rewrite_prompt.png)
+![修改章节大纲](images/pptv1/rewrite_prompt.png)
+
+4. PPT 生成样例：
+
+![](images/pptv1/pptoutputdemo.png)

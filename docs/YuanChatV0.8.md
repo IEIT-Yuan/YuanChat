@@ -1,4 +1,4 @@
-# YuanChat V0.8 新增YuanPPT幻灯片生成工具
+# YuanChat V0.8 新增智能体生成框架(YuanPPT)
 
 嗨，大家好，很高兴跟大家分享，`YuanChat`升级版本V0.8，欢迎大家下载体验。
 

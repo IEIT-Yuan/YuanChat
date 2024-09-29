@@ -1,10 +1,19 @@
-# YuanPPT 幻灯片生成工具
+# YuanChat V0.8 新增YuanPPT幻灯片生成工具
 
-![](images/pptv1/begin.png)
+嗨，大家好，很高兴跟大家分享，`YuanChat`升级版本V0.5，欢迎大家下载体验。
 
-`YuanPPT` 幻灯片生成工具是`Yuan-2.0`的一部分。以`YuanChat`为主要后台推理服务，同时也兼容以`Ollama`作为推理服务。通过使用`YuanPPT`，可以让用户轻松地按照主题生成和修改幻灯片。
+## 更新内容
+* 增加YuanPPT幻灯片自动生成工具
+* YuanPPT支持大纲生成和重写
+* YuanPPT支持章节生成和重写
+* YuanPPT支持根据章节内容自动检索图片
+* YuanPPT支持幻灯片模版配置
+* YuanPPT支持YuanChat API Server 和 Ollama作为推理后端
+* 解决部分已知问题
+
 
 ## 开始
+实现办公场景下的PPT智能体生成框架，可以通过自然语言对话方式，拆解相关问题、大纲生成、页面分配、自动配图等功能，可以通过源Chat 的API Server进行API 调用
 
 * YuanPPT启动
 * 配置推理服务

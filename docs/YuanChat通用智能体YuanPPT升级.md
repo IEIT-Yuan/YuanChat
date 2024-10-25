@@ -113,8 +113,8 @@ template = st.radio("选择模板",("绚烂","青春","水冷","商务灰","商�
 克隆项目到本地目录中
 
 ```
-git clone ssh://git@10.128.4.12:6222/yuanchat/yuanppt.git
-cd Yuanppt
+git clone git@github.com:IEIT-Yuan/YuanChat.git
+cd yuanchat/ppt
 ```
 
 安装所需要的 python 依赖

@@ -23,8 +23,8 @@
 克隆项目到本地目录中
 
 ```
-git clone ssh://git@10.128.4.12:6222/yuanchat/yuanppt.git
-cd yuanppt
+git clone git@github.com:IEIT-Yuan/YuanChat.git
+cd yuanchat/ppt
 ```
 
 安装所需要的 python 依赖

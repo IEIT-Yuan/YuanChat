@@ -1,0 +1,4 @@
+mkdocs-material
+mike
+mkdocs-static-i18n
+pymdown-extensions

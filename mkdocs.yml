@@ -1,4 +1,197 @@
-site_name: YuanChat
-site_url: https://mydomain.org/mysite
+site_name: Yuan-Chat Docs
+site_url: https://zl-jn.github.io/yuan-chat-docs/
+site_description: Yuan-Chat Docs
+repo_url: https://github.com/zl-jn/yuan-chat-docs
+
 theme:
   name: material
+  #nav: false
+  font: false
+  language: zh
+  features:
+    - navigation.tabs
+    - navigation.tracking
+    - navigation.tabs.sticky
+    - navigation.top
+
+    - content.code.copy #代码复制
+    - content.code.annotate  #代码批注
+    - content.tabs.link
+    #- search.highlight
+    #- search.share
+    #- search.suggest
+    #- announce.dismiss
+    #- content.code.annotate
+    #- content.code.copy
+    ## - content.code.select
+    ## - content.footnote.tooltips
+    ## - content.tabs.link
+    #- content.tooltips
+    ## - header.autohide
+    ## - navigation.expand
+    #- navigation.footer
+    #- navigation.indexes
+    ## - navigation.instant
+    ## - navigation.instant.prefetch
+    ## - navigation.instant.progress
+    ## - navigation.prune
+    #- navigation.sections
+    #- navigation.tabs
+    #- navigation.top
+    #- navigation.tracking
+    #- toc.follow
+  icon:
+    admonition:
+      note: octicons/tag-16
+      abstract: octicons/checklist-16
+      info: octicons/info-16
+      tip: octicons/squirrel-16
+      success: octicons/check-16
+      question: octicons/question-16
+      warning: octicons/alert-16
+      failure: octicons/x-circle-16
+      danger: octicons/zap-16
+      bug: octicons/bug-16
+      example: octicons/beaker-16
+      quote: octicons/quote-16
+    
+    annotation: material/plus-circle
+                #material/plus-circle
+                #material/circle-medium
+                #material/record-circle
+                #material/arrow-right-circle
+                #material/arrow-right-circle-outline
+                #material/chevron-right-circle
+                #material/star-four-points-circle
+                #material/plus-circle-outline
+      
+
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/link
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch-off
+        name: Switch to system preference
+
+plugins:
+  - search
+  - mike:
+      alias_type: symlink
+      redirect_template: null
+      deploy_prefix: ''
+      canonical_version: null
+      version_selector: true
+      css_dir: css
+      javascript_dir: js
+
+  - i18n:
+      docs_structure: folder 
+      fallback_to_default: true
+      reconfigure_material: true
+      reconfigure_search: true
+      languages:
+        - locale: zh
+          default: true
+          name: 中文（简体）
+          build: true
+        - locale: en
+          name: English
+          link: /en/
+          build: true
+          nav_translations:
+            首页: Home
+            快速入门: Getting Started
+            管理员手册: Administration Guide
+            用户手册: User Guide
+            API文档: APl Reference
+            开发手册: Developer Guidew
+            帮助: Help
+
+extra:
+  version:
+    provider: mike
+  
+#extra_css:
+#  - custom.css
+
+markdown_extensions:
+  #- markdown_include.include:
+  #    base_path: docs
+  # - mdx_include:
+  #     base_path: docs
+  - pymdownx.emoji:
+      emoji_index: !!python/name:pymdownx.emoji.twemoji
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - attr_list
+  - meta
+  - pymdownx.details
+  - pymdownx.keys
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.escapeall
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - admonition
+  - toc:
+      permalink: true
+  - def_list
+
+  - admonition                #admonition
+  - pymdownx.details          #admonition
+  - pymdownx.superfences      #admonition
+  - attr_list                 #annotations
+  - md_in_html                #annotations
+  - pymdownx.superfences      #annotations
+
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+  - javascripts/katex.js
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+  
+extra_css:
+  - https://unpkg.com/katex@0/dist/katex.min.css
+
+nav:
+  - 首页: index.md
+  - 快速入门: GettingStarted/GettingStarted.md
+  - 管理员手册: AdministrationGuide/AdministrationGuide.md
+  - 用户手册: UserGuide/UserGuide.md
+  - API文档: APlReference/APlReference.md
+  - 开发手册: DeveloperGuide/DeveloperGuide.md
+  - 帮助: Help/Help.md

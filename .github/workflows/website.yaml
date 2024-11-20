@@ -1,11 +1,13 @@
-name: Mike deploy
+name: website
 
 on:
   push:
-    branches: [ website ]
-
+    branches:
+      - website
+permissions:
+  contents: write
 jobs:
-  build_docs:
+  deploy:
     name: Generate [version] documentation
     runs-on: ubuntu-latest
     strategy:

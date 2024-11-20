@@ -1,9 +1,8 @@
-name: website
-
+name: website 
 on:
   push:
     branches:
-      - website
+      - website 
 permissions:
   contents: write
 jobs:
@@ -44,3 +43,4 @@ jobs:
       - name: Deploy with mike
         run: |
           mike deploy --push $(cat version.txt)
+

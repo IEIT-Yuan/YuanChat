@@ -25,6 +25,7 @@
 </div>
 
 ## :tada: 最近更新
+* :fire: [2024-12-16] [**YuanChat V0.9.1新版本功能优化升级** :point_right:](./docs/YuanChatV0.9.1新版本功能优化升级.md)
 * :fire: [2024-10-25] [**YuanChat升级智能体YuanPPT** :point_right:](./docs/YuanChat通用智能体YuanPPT升级.md)
 * :fire: [2024-09-29] [**YuanChat V0.8 新增自动PPT生成功能** :point_right:](./docs/YuanChatV0.8.md)
 * :fire: [2024-06-14] [**`not found libllama.dll`问题修复补丁** :point_right:](./docs/YuanChat_libllama_not_found_patch.md)
